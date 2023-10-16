@@ -9,10 +9,14 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'ie: C:\Users\Taylor
         Dim userProfilePath As String = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
         Dim filename As String = "test.xlsx"
+
+        'ie: C:\Users\Taylor\test.xlsx
         Dim wbPath As String = IO.Path.Combine(userProfilePath, filename)
 
+        'open Workbook, this is a custom function shown just below
         Dim oWb As Excel.Workbook = openWorkbook(wbPath)
 
         'Simulating opening a second time
@@ -20,6 +24,7 @@ Public Class Form1
 
     End Sub
 
+    'here's what you want
     Private Function openWorkbook(wbPath As String) As Excel.Workbook
         Dim oWb As Excel.Workbook
         For Each wb As Excel.Workbook In oExcel.Workbooks
